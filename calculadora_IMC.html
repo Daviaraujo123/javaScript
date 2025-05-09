@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vw;
+            width: 100vh;
+            display: flex;
+            justify-content: center;
+            background-color: #03152e;
+            color: white;
+        }
+
+        main {
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .divAltura,
+        .divPeso,
+        .divCal {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 20px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #6f00ff;
+            color: white;
+        }
+
+        @media (max-width: 500px) {
+
+            body,
+            input,
+            button {
+                font-size: 15px;
+            }
+        }
+    </style>
+
+    <script>
+        const calcIMC = () => {
+            const resultado = document.querySelector('#resultado')
+            const altura = document.querySelector('#altura')
+            const peso = document.querySelector('#peso')
+
+            if (altura.value !== '' && peso.value !== '') {
+                const imc = (peso.value / (altura.value * altura.value)).toFixed(2)
+                let classification = ''
+
+                if (imc < 18.5) {
+                    classification = 'Abaixo do peso'
+                } else if (imc < 25) {
+                    classification = 'Peso normal'
+                } else if (imc < 30) {
+                    classification = 'Acima do peso'
+                } else if (imc < 35) {
+                    classification = 'Obesidade grau I'
+                } else if (imc < 41) {
+                    classification = 'Obesidade grau II'
+                } else {
+                    classification = 'Obesidade grau III'
+                }
+
+                resultado.innerHTML = `IMC: ${imc} (${classification})`
+            } else {
+                resultado.innerHTML = 'Preencha os campos'
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <h2>Cálculo IMC</h2>
+        <div class="divAltura">
+            <label for="altura">Altura (M)</label>
+            <input type="number" id="altura">
+        </div>
+
+        <div class="divPeso">
+            <label for="peso">Peso (Kg)</label>
+            <input type="number" id="peso">
+        </div>
+
+        <div class="divCal">
+            <button onclick="calcIMC()">Calcular</button>
+        </div>
+
+        <span id="resultado"></span>
+    </main>
+</body>
+
+</html>
