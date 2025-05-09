@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Cliques</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1c1c1c;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #2d2d2d;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #00ffff;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #00ffff;
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00b3b3;
+        }
+    </style>
+    <script>
+        let x = 0;
+        function AdicionarClick() {
+            x += 1;
+            document.getElementById("cliques").innerText = x;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contador de Cliques</h1>
+        <h2 id="cliques">0</h2>
+        <button onclick="AdicionarClick()">Clique Aqui</button>
+    </div>
+</body>
+
+</html>
