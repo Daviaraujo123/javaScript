@@ -2,30 +2,107 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo de Adivinha</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinha</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      height: 100----vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #4facfe;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00c6fb;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
     <h1>Jogo de Adivinhação</h1>
     <p>Estou pensando em um número entre 1 a 100, consegue descobrir?</p>
     <input type="text" id="guessInput">
+    <br>
     <button type="button" id="guessButton">Adivinhar</button>
     <p id="result"></p>
+  </div>
 
-    <script>
+  <script>
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
 
-        let randomNumber = Math.floor(Math.random() * 100) + 1;
+    let guessInput = document.getElementById("guessInput");
+    let guessButton = document.getElementById("guessButton");
+    let result = document.getElementById("result");
 
-        let guessInput = document.getElementById("guessInput");
-        let guessButton = document.getElementById("guessButton");
-        let result = document.getElementById("result");
+    guessButton.addEventListener("click", function () {
+      let guess = parseInt(guessInput.value);
 
-        guessButton.addEventListener('click',function()) {
-            let guess = parseInt(guessInput)
-        }
-    </script>
+      if (isNaN(guess)) {
+        result.innerHTML = "Por favor, insira um número válido!";
+        return;
+      }
+
+      if (guess < randomNumber) {
+        result.innerHTML = "O número é maior.";
+      } else if (guess > randomNumber) {
+        result.innerHTML = "O número é menor.";
+      } else {
+        result.innerHTML = "Parabéns, você acertou!";
+      }
+    });
+  </script>
 </body>
 
 </html>
